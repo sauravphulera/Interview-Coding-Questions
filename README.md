@@ -53,4 +53,38 @@ The majority element is the element that appears more than <code>⌊n / 2⌋</co
         return candidate;
     }
   ```
+## Best Time to Buy and Sell Stock II (buy and sell multiple times)
+### Problem Statement
+You are given an integer array prices where prices[i] is the price of a given stock on the ith day.
+On each day, you may decide to buy and/or sell the stock. You can only hold at most one share of the stock at any time. However, you can buy it then immediately sell it on the same day.
+Find and return the maximum profit you can achieve.
+
+### Solution
+[Video Explanation](https://youtu.be/LTnycd5PzDg)
+Let's think about this case. We have a descreasing part.
+
+<code>Input: prices = [1,5,3,100]</code>.
+In this case, 100 - 1 = 99 is the maximum profit? It's not. The maximum profit should be 101.
+<code>
+buy a stock with `1`
+sell a stock with `5` (= profit 4)
+buy a stock with `3`
+sell a stock with `100` (= profit 97 + 4)
+= 101
+</code>
+<b> Note: Given the consideration of taking the maximum profit from the two cases, Seems like we should sell a stock immediately when we find larger number, because we got maximum profit in the both cases. </b>
+Time complexity: <code>O(n)</code>
+Space complexity:<code> O(1) </code>
+
+```javascript
+var maxProfit = function(prices) {
+    let profit = 0;
+    for(let i=1;i<prices.length;i++) {
+        if(prices[i] > prices[i-1]) {
+            profit += prices[i] - prices[i-1];
+        }
+    }
+    return profit;
+};
+```
 
