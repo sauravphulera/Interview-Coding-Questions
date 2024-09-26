@@ -134,8 +134,8 @@ You are given an integer array nums. You are initially positioned at the array's
 Return true if you can reach the last index, or false otherwise.
 Example 1:
 
-Input: nums = <code>[2,3,1,1,4]</code> < br / >
-Output: true < br / >
+Input: nums = <code>[2,3,1,1,4]</code>< br / >
+Output: true< br / >
 Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.< br / >
 
 Example 2:< br / >
