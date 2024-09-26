@@ -88,3 +88,43 @@ var maxProfit = function(prices) {
 };
 ```
 
+## Rotate an Array
+
+Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.
+
+### Approach 1 Time complexity (k*n) n is for shift operation ans Space is O(0).
+The Idea is simple yoy have <code>[1,2,3,4,5]</code> and <code>k=2</code>. The result will be <code>[4,5,1,2,3]</code> so the last 2 elements are appended to first. So we will just fetch last elements from <code>n-k to n</code> and append them to the start of array at the same time.
+```javascript
+  var rotate = function(nums, k) {
+      let n = nums.length;
+      if(k == 0) return nums;
+      for(let i=nums.length -1; i >= n-k; i--) {
+          const temp = nums.pop();
+          nums.unshift(temp);
+      }
+      return nums;
+  };
+```
+### Better Approach O(n)
+For <code>[1,2,3,4,5]</code> and <code>k=2</code>
+1. The entire array is reversed from index <code>0 to len(nums) - 1</code>.
+   This step places the elements that need to be rotated to the front. <code>[5,4,3,2,1]</code>
+2. Reverse the First k Elements: <code>[4,5,3,2,1]</code>
+3. Reverse the remaining <code>n-k</code> elements. <code>[4,5,1,2,3] </code>
+```javascript
+  var rotate = function(nums, k) {
+      let n = nums.length;
+      k = k % n; // handle cases where k >= n
+      if(k == 0) return nums;
+  
+          // Reverse the entire array
+          nums.reverse();
+          console.log(nums)
+          // Reverse the first k elements
+          reverseBetween(nums,0, k-1);
+          // Reverse the remaining elements (from k to end)
+          reverseBetween(nums,k, n-1);
+  
+      return nums;
+  };
+```
