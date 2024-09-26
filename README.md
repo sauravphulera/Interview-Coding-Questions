@@ -1,6 +1,6 @@
 # Interview Coding Questions
 
-## Majority Element
+## 1.Majority Element
 Given an array <code>nums</code> of size <code>n</code>, return the majority element.
 
 The majority element is the element that appears more than <code>⌊n / 2⌋</code> times. You may assume that the majority element always exists in the array.
@@ -53,7 +53,7 @@ The majority element is the element that appears more than <code>⌊n / 2⌋</co
         return candidate;
     }
   ```
-## Best Time to Buy and Sell Stock II (buy and sell multiple times)
+## 2. Best Time to Buy and Sell Stock II (buy and sell multiple times)
 ### Problem Statement
 You are given an integer array prices where prices[i] is the price of a given stock on the ith day.
 On each day, you may decide to buy and/or sell the stock. You can only hold at most one share of the stock at any time. However, you can buy it then immediately sell it on the same day.
@@ -88,7 +88,7 @@ var maxProfit = function(prices) {
 };
 ```
 
-## Rotate an Array
+## 3.Rotate an Array
 
 Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.
 
