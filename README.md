@@ -161,7 +161,7 @@ var canJump = function(nums) {
 };
 ```
 
-## Jump Game 2
+## 5. Jump Game 2
 **You are given a 0-indexed array of integers nums of length n. You are initially positioned at nums[0].**
 
 Each element nums[i] represents the maximum length of a forward jump from index i. In other words, if you are at nums[i], you can jump to any nums[i + j] where:
@@ -179,12 +179,13 @@ Output: 2
 Explanation: The minimum number of jumps to reach the last index is 2. Jump 1 step from index 0 to 1, then 3 steps to the last index.  
 
 **Solution O(n)**
-You just have to keep finding the farthest position you can reach from i <code>for i =0 farthest = i + nums[i] = 2</code> and then untill you reach that farthest position <code>ie i == 2</code> find the next farthest position. whenever you reach a farthest position increase your jump count.
-I use a greedy strategy:
+You just have to keep finding the farthest position you can reach from i <code>for i =0 farthest = i + nums[i] = 2</code> and then untill you reach that farthest position <code>ie i == 2</code> find the next farthest position <code>ie max(farthest, i+nums[i])</code>. whenever you reach a farthest position increase your jump count.  
 
-Track the Farther: As I move through the array, I keep track of the farthest index I can reach.
+**Steps:**
 
-Jump When Needed: When I reach the end of the current jump range, I make a jump and update the end of the range to the farthest point I calculated.
+**Track the Farther:** As I move through the array, I keep track of the farthest index I can reach.
+
+**Jump When Needed:** When I reach the end of the current jump range, I make a jump and update the end of the range to the farthest point I calculated.
 
 ```javascript
 var jump = function(nums) {
