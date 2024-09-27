@@ -270,5 +270,61 @@ function hIndex(citations) {
 }
 ```
 
+## Product of array except self
+Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].  
 
+The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.  
 
+You must write an algorithm that runs in O(n) time and without using the division operation.  
+
+ 
+
+Example 1:  
+
+Input: nums = <code>[1,2,3,4]</code>
+Output: <code>[24,12,8,6]</code>
+Example 2:
+
+Input: nums = <code>[-1,1,0,-3,3]</code>
+Output: <code>[0,0,9,0,0]</code>
+
+**1. Dividing the product of array with the number**
+What we would do is, we would find the product of all the numbers of our Array and then divide the product with each element of the array to get the new element for that position in our final answer array.
+
+Now after presenting the interviewer with this solution, here is our one more chance to shine out in the interview. We would specifically tell the interviewer that one major con in going with this method is when we have an element as 0 in our array. The problem is that, we can't perform a division by 0, as a result, we won't be able to get corresponding values in our final answer array for the indices having <code>0</code> in our initial array at that position.
+
+**2. Solution O (n)**
+Calculate left products in left array  
+Calculate right products in right subarray  
+get result with product of both left and right
+
+```javascript
+var productExceptSelf = function(nums) {
+    let left = [], right = [], res = [];
+    const n =nums.length;
+
+    // calc left products
+    for(let i=0; i < nums.length; i++) {
+        if(i === 0) {
+            left[i] = 1;
+        } else {
+            left[i] = nums[i-1] * left[i-1];
+        }
+    }
+
+    // calc right products
+    for(let i=n-1; i >=0; i--) {
+        if(i == n-1){
+            right[i] = 1;
+        } else {
+            right[i] = right[i+1] * nums[i+1]
+        }
+    }
+
+    for(let i= 0; i< n;i++) {
+        res[i] = left[i] * right[i];
+    }
+
+    return res;
+};
+```
