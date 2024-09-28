@@ -380,7 +380,7 @@ This implies that if (surplus + total_surplus - surplus) >= 0 then the current s
       return totalSurplus >= 0 ? start : -1
   };
 ```
-## Candy Distribution
+## 9.Candy Distribution
 There are n children standing in a line. Each child is assigned a rating value given in the integer array ratings.
 
 You are giving candies to these children subjected to the following requirements:
