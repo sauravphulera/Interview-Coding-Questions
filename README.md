@@ -380,3 +380,52 @@ This implies that if (surplus + total_surplus - surplus) >= 0 then the current s
       return totalSurplus >= 0 ? start : -1
   };
 ```
+## Candy Distribution
+There are n children standing in a line. Each child is assigned a rating value given in the integer array ratings.
+
+You are giving candies to these children subjected to the following requirements:
+
+Each child must have at least one candy.
+Children with a higher rating get more candies than their neighbors.
+Return the minimum number of candies you need to have to distribute the candies to the children.
+
+**Solution**
+The problem is a variant of the <code>"Candy Distribution"</code> problem.
+Appoach to solve this problem is  
+**Step 1: Initialize each child with at least one candy.**  
+We begin by assigning one candy to each child, so we have:
+```javascript
+Ratings: [29, 51, 87, 87, 72, 12]
+Candies: [1, 1, 1, 1, 1, 1]
+```
+**Step 2: Left to Right pass.**
+In this pass, we ensure that if a child has a higher rating than the previous child, they get more candies than the previous one.
+<code>Compare ratings[1] = 51 with ratings[0] = 29. Since 51 > 29, we give the second child one more candy than the first one. So, candies[1] = candies[0] + 1 = 2.</code>
+and so on...
+candies = <code>[1, 2, 3, 1, 1, 1]</code>
+**Step 3: Right to Left pass.**
+In this pass, we ensure that if a child has a higher rating than the next child, they get more candies than the next one.
+
+Candies: <code>[1, 2, 3, 3, 2, 1]</code>
+
+Here is the code for the following
+```javascript
+var candy = function(ratings) {
+    const n = ratings.length;
+    let candy = Array(n).fill(1);
+
+    // left to right
+    for(let i=1;i<n;i++) {
+        if(ratings[i] > ratings[i-1]) {
+            candy[i] = candy[i-1] +1;
+        }
+    }
+    for(let i=n-2;i>=0;i--) {
+        if(ratings[i] > ratings[i+1]) {
+            candy[i] = Math.max(candy[i], candy[i+1]+1)
+        }
+    }
+
+    return candy.reduce((a,b) => a+b);
+};
+```
