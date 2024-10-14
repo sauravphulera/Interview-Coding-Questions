@@ -214,7 +214,7 @@ Explanation: [3,0,6,1,5] means the researcher has 5 papers in total and each of 
 Since the researcher has 3 papers with at least 3 citations each and the remaining two with no more than 3 citations each, their h-index is 3.  
 
 ### Approach: 1 Sorting and Iteration O(nlogn)
-**Sorting**: Sorts the citations list in ascending order.
+**Sorting**: Sorts the citations list in descending order. <code>i.e  [6,5,3,1,0]</code>
 Iterative Check: Iterates through the sorted list.  
 For each citation v at index i:  
 If n - i (number of articles with at least n - i citations) is less than or equal to v itself (the current citation count), it means the h-index is n - i.  
