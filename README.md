@@ -425,7 +425,49 @@ var candy = function(ratings) {
             candy[i] = Math.max(candy[i], candy[i+1]+1)
         }
     }
-
     return candy.reduce((a,b) => a+b);
 };
+```
+
+## 10. Integer to roman
+```javascript
+  var intToRoman = function (num) {
+      const M = ["", "M", "MM", "MMM"];
+      const C = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"];
+      const X = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"];
+      const I = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
+      return M[Math.floor(num/1000)] + C[Math.floor((num%1000)/100)] + X[Math.floor((num%100)/10)] + I[num%10];
+      return result;
+  };
+```
+## 11. Roman to integer
+
+<code>"LVIII" = 58</code> <code>"MCMXCIV" = 1994</code>  
+
+```javascript
+  var romanToInt = function(s) {
+
+      let n = 0;
+      const obj = {
+          I: 1,
+          V: 5,
+          X:10,
+          L: 50,
+          C: 100,
+          D: 500,
+          M: 1000,
+          t: 10000000
+      }
+  
+      for(let i=0;i<s.length;i++) {
+          const curr = s[i];
+          const prev =  s[i-1];
+          if(obj[curr] > obj[prev] && i-1 >=0) {
+              n += obj[curr] - obj[prev] - obj[prev]
+          } else {
+              n += obj[curr]
+          }        
+      }
+      return n;
+  };
 ```
